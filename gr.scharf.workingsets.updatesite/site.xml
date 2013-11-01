@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/gr.scharf.workingsets.feature_2.2.0.201311012151.jar" id="gr.scharf.workingsets.feature" version="2.2.0.201311012151">
+      <category name="Query Working Sets"/>
+   </feature>
+   <category-def name="Query Working Sets" label="Query Working Sets"/>
+</site>

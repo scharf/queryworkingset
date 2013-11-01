@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="gr.scharf.workingsets.internal.EmptyStartup">
+      </startup>
+   </extension>
+   <extension point="org.eclipse.ui.workingSets">
+      <workingSet
+            description="Dynamically calculated working sets based on patterns."
+            icon="icons/workset.gif"
+            id="gr.scharf.workingsets.queryWorkingSet"
+            name="Query Working Set"
+            pageClass="gr.scharf.workingsets.internal.RegExWorkingSetPage"
+            updaterClass="gr.scharf.workingsets.QueryWorkingSetUpdater">
+      </workingSet>
+   </extension>
+</plugin>
