@@ -12,21 +12,32 @@ If the line starts with a '-' (minus) the matching files are removed form the wo
 
 Here are a few examples. To match python files that do not contain test cases you could use
 
-    .*.py
-    -.*test.*
-	
+    [.]py$
+    -test
 This first matches any .py file and in the second line it removes all files containing 'test'.
+Because the match is done with java regular expressions, we have to somehow quote the <code>.</code> in order
+to match it. This can be done either by <code>\.</code> or by <code>[.]</code>. To make sure it is the extension we have to a <code>$</code> at the end.
+
 
 Here is a bit more complicated pattern:
 
-    .*\.coffee
-    -.*static.*
-    -.*ckann_chro.*
-    -.*patches.*
-    -.*spec.*
-    -.*grunt.*
-    -.*node_.*
-    -/h/.*
+    \.coffee$
+    -static
+    -ckann_chro
+    -patches
+    -spec
+    -grunt
+    -node_
+    -^/h/
+ 
+Here we match read me files and documentation
+
+ (?i)[.](md|txt|markdown|sd)
+ # lines starting with a hash are comments
+ # match filenames containing readme (not the path)
+ (?i)readme[^/]*$
+
+To do case insensitive matching use the <code>(?i)</code>. For more information about patterns see also [http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html|java regular expression] documentation.
  
 For performance it might be better to use a single expression.
 

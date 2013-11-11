@@ -1,13 +1,20 @@
 <?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/></head><body><h1 id="Query_Working_Sets">Query Working Sets</h1><p>Query Working Sets are based on query expressions to select the files in the working set. 
 The content of the working set is updated dynamically as the files change in the workspace.</p><h2 id="Regular_Expressions">Regular Expressions</h2><p>The current version contains one regular expression per line that matches the (project) path of the files. 
-If the line starts with a '-' (minus) the matching files are removed form the working set.</p><p>Here are a few examples. To match python files that do not contain test cases you could use</p><pre>   .*.py
-   -.*test.*
-</pre><p>This first matches any .py file and in the second line it removes all files containing 'test'.</p><p>Here is a bit more complicated pattern:</p><pre>   .*\.coffee
-   -.*static.*
-   -.*ckann_chro.*
-   -.*patches.*
-   -.*spec.*
-   -.*grunt.*
-   -.*node_.*
-   -/h/.*
-</pre><p>For performance it might be better to use a single expression.</p></body></html>
+If the line starts with a '-' (minus) the matching files are removed form the working set.</p><p>Here are a few examples. To match python files that do not contain test cases you could use</p><pre>   <a href=".">.</a>py$
+   -test
+</pre><p>This first matches any .py file and in the second line it removes all files containing 'test'.
+Because the match is done with java regular expressions, we have to somehow quote the <code>.</code> in order
+to match it. This can be done either by <code>\.</code> or by <code><a href=".">.</a></code>. To make sure it is the extension we have to a <code>$</code> at the end.</p><p>Here is a bit more complicated pattern:</p><pre>   \.coffee$
+   -static
+   -ckann_chro
+   -patches
+   -spec
+   -grunt
+   -node_
+   -^/h/
+</pre><p>Here we match read me files and documentation</p><pre>(?i)<a href=".">.</a>(md|txt|markdown|sd)
+# lines starting with a hash are comments
+# match filenames containing readme (not the path)
+(?i)readme<a href="^/">^/</a>*$
+</pre><p>To do case insensitive matching use the <code>(?i)</code>. For more information about patterns see also <a href="http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html">java regular expression</a> documentation.</p><p>For performance it might be better to use a single expression.</p><h2 id="Limitations">Limitations</h2><p>At the moment the patterns are stored as the <code>name</code> of the working set. There might be some 
+(old) tools that use the <code>name</code> instead of the <code>label</code> to show the working set.</p><p>If the patterns match no file, then the workingset shows all files....</p></body></html>

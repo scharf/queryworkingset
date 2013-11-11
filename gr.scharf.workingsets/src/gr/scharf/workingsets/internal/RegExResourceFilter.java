@@ -25,7 +25,7 @@ public class RegExResourceFilter implements IResourceProxyVisitor {
 
 		@Override
 		public void  matchResource(IResourceProxy proxy, State state) {
-			if(pattern.matcher(proxy.requestFullPath().toString()).matches()) {
+			if(pattern.matcher(proxy.requestFullPath().toString()).find()) {
 				state.include();
 			}
 		}
@@ -40,7 +40,7 @@ public class RegExResourceFilter implements IResourceProxyVisitor {
 
 		@Override
 		public void  matchResource(IResourceProxy proxy, State state) {
-			if(pattern.matcher(proxy.requestFullPath().toString()).matches()) {
+			if(pattern.matcher(proxy.requestFullPath().toString()).find()) {
 				state.exclude();
 			}
 		}
@@ -95,6 +95,8 @@ public class RegExResourceFilter implements IResourceProxyVisitor {
 			if(filter.startsWith("-")) {
 				filter=filter.substring(1);
 				matcher = new RegexExcludeMatcher(filter);
+			} else if(filter.startsWith("#")){
+				// this is a comment -- ignore it
 			} else if(filter.length()>0){
 				matcher = new RegexIncludeMatcher(filter);
 			}

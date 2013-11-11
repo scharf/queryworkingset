@@ -6,8 +6,8 @@
 Lines that start with a '-' (minus) are excluded.
 <b>Note:</b>The patterns must match the entire file path.
 Examples:
-   .*.py
-   -.*test.*
+   \..py
+   -test
 </description>
         <topic label="Query Working Set Help" href="help/Query Working Sets.html"/>
     </context>
