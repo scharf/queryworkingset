@@ -1,0 +1,32 @@
+
+= Query Working Sets =
+
+Query Working Sets are based on query expressions to select the files in the working set. 
+The content of the working set is updated dynamically as the files change in the workspace.
+
+
+== Regular Expressions ==
+
+The current version contains one regular expression per line that matches the (project) path of the files. 
+If the line starts with a '-' (minus) the matching files are removed form the working set.
+
+Here are a few examples. To match python files that do not contain test cases you could use
+
+    .*.py
+    -.*test.*
+	
+This first matches any .py file and in the second line it removes all files containing 'test'.
+
+Here is a bit more complicated pattern:
+
+    .*\.coffee
+    -.*static.*
+    -.*ckann_chro.*
+    -.*patches.*
+    -.*spec.*
+    -.*grunt.*
+    -.*node_.*
+    -/h/.*
+ 
+For performance it might be better to use a single expression.
+ 

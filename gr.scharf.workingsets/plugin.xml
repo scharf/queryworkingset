@@ -17,4 +17,12 @@
             updaterClass="gr.scharf.workingsets.QueryWorkingSetUpdater">
       </workingSet>
    </extension>
+   <extension
+         name="Query Working Sets"
+         point="org.eclipse.help.toc">
+      <toc
+            file="help/Query Working Sets-toc.xml"
+            primary="true">
+      </toc>
+   </extension>
 </plugin>
