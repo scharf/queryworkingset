@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+    <context id="wizard_help" title="Regular Expressions to Include and Exclude Files">
+        <description>Enter Regular Expressions that match the file names.
+Lines that start with a '-' (minus) are excluded.
+<b>Note:</b>The patterns must match the entire file path.
+Examples:
+   .*.py
+   -.*test.*
+</description>
+        <topic label="Query Working Set Help" href="help/Query Working Sets.html"/>
+    </context>
+</contexts>

@@ -41,12 +41,14 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkingSet;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.fieldassist.ContentAssistCommandAdapter;
 import org.eclipse.ui.model.IWorkbenchAdapter;
 import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
@@ -70,7 +72,7 @@ public class RegExWorkingSetPage extends DynamicWorkingSetPage {
 	public RegExWorkingSetPage() {
 		super("gr.scharf.workingsets.RegExWorkingSetPage",
 				"gr.scharf.workingsets.regexWorkingSetPage",
-				"Enter project name regular expression",
+				"Matching files are added to the working set.",
 				Activator.getImageDescriptor("icons/logo16.gif"));
 	}
 
@@ -81,7 +83,7 @@ public class RegExWorkingSetPage extends DynamicWorkingSetPage {
 	 */
 	@Override protected void createFields(Composite parent) {
 		Label label = new Label(parent, SWT.NULL);
-		label.setText("Expressions:");
+		label.setText("Regular Expressions (Lines starting with '-' (minus) are excluded.)");
 	    SashForm sashForm = new SashForm(parent, SWT.VERTICAL);
 	    sashForm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		fExpressionText = new Text(sashForm, SWT.BORDER | SWT.MULTI);
@@ -311,4 +313,10 @@ public class RegExWorkingSetPage extends DynamicWorkingSetPage {
 		}
 
     } 
+    @Override
+    protected void setControl(Control control) {
+    	// let's set the help id
+    	PlatformUI.getWorkbench().getHelpSystem().setHelp(control, Activator.PLUGIN_ID+".wizard_help");
+    	super.setControl(control);
+    }
 }

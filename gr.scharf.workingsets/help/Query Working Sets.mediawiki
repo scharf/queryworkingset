@@ -29,4 +29,10 @@ Here is a bit more complicated pattern:
     -/h/.*
  
 For performance it might be better to use a single expression.
+
+== Limitations ==
+
+At the moment the patterns are stored as the <code>name</code> of the working set. There might be some 
+(old) tools that use the <code>name</code> instead of the <code>label</code> to show the working set.
  
+If the patterns match no file, then the workingset shows all files....
